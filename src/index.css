@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Make circles that indicate the steps of the form: */
+.indicator-step {
+    background-color: #bbb;
+    opacity: 0.5;
+}
+
+/* Indicates current step */
+.indicator-step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.indicator-step.finish {
+    background-color: #5897b4;
+}
+
+.form-step.grid {
+    animation: showActiveStep .7s forwards;
+}
+
+@keyframes showActiveStep {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
