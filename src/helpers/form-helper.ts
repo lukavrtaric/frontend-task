@@ -1,10 +1,3 @@
-export interface IElementError {
-    htmlElement: HTMLElement;
-    inputElement: HTMLInputElement;
-    show: boolean;
-    message?: string;
-}
-
 const showHideElementVisibility = (element: HTMLElement, show: boolean) => {
     if (show) {
         element.classList.remove('invisible');
@@ -25,12 +18,12 @@ const showHideElementDisplay = (element: HTMLElement, show: boolean) => {
     }
 };
 
-const showHideError = ({ htmlElement, inputElement, show, message = 'Undefined error' }: IElementError) => {
+const showHideError = (htmlElement: HTMLElement, inputElement: HTMLInputElement, show: boolean, message?: string) => {
     show
         ? inputElement.classList.add('border-[#f2545b]', 'focus:border-[#f2545b]', 'focus:ring-[#f2545b]')
         : inputElement.classList.remove('border-[#f2545b]', 'focus:border-[#f2545b]', 'focus:ring-[#f2545b]');
 
-    htmlElement.innerHTML = message;
+    htmlElement.innerHTML = message ?? "Undefined error";
     showHideElementVisibility(htmlElement, show);
 };
 

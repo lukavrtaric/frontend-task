@@ -9,19 +9,32 @@
     <body class="bg-slate-100">
         <div id="app">
             <div class="container mx-auto max-w-xl p-4">
-                <!-- Container for image logo -->
+                <!-- START Container for image logo -->
                 <div class="flex justify-center">
                     <img class="h-48 w-48" src="/OpRX_logo.svg" alt="Workflow logo" />
                 </div>
+                <!-- END Container for image logo -->
 
                 <div class="shadow sm:rounded-md">
-                    <!-- Form -->
+                    <!-- START Form -->
                     <form action="#" id="registration_form" method="POST">
                         <div class="overflow-hidden">
                             <div class="bg-white px-4 py-5 sm:p-6">
-                                <!-- Step 1 -->
+                                <div class="text-center mb-4 text-[#382e4c]">Registration form</div>
+                                <!-- START Action buttons -->
+                                <div class="mb-4 flex">
+                                    <button
+                                        id="modal_table_btn_open"
+                                        type="button"
+                                        class="w-30 inline-flex justify-center rounded-md border border-transparent bg-[#729A40] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#85b44b] focus:outline-none"
+                                    >
+                                        Show users
+                                    </button>
+                                </div>
+                                <!-- END Action buttons -->
+                                <!-- START Step 1 -->
                                 <div class="form-step grid grid-cols-6 gap-6">
-                                    <!-- Username field -->
+                                    <!-- START Username field -->
                                     <div class="col-span-6 sm:col-span-6">
                                         <label for="username" class="block font-medium tracking-wider text-[#382e4c]">
                                             Username
@@ -39,8 +52,9 @@
                                             error
                                         </small>
                                     </div>
+                                    <!-- END Username field -->
 
-                                    <!-- Password field -->
+                                    <!-- START Password field -->
                                     <div class="col-span-6 sm:col-span-6">
                                         <label for="password" class="block font-medium tracking-wider text-[#382e4c]">
                                             Password
@@ -74,11 +88,13 @@
                                             error
                                         </small>
                                     </div>
+                                    <!-- END Password field -->
                                 </div>
+                                <!-- END Step 1 -->
 
-                                <!-- Step 2 -->
+                                <!-- START Step 2 -->
                                 <div class="form-step hidden grid-cols-6 gap-6">
-                                    <!-- First name field -->
+                                    <!-- START First name field -->
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="firstName" class="block font-medium text-[#382e4c]">
                                             First name
@@ -95,8 +111,9 @@
                                             error
                                         </small>
                                     </div>
+                                    <!-- END First name field -->
 
-                                    <!-- Last name field -->
+                                    <!-- START Last name field -->
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="lastName" class="block font-medium text-[#382e4c]">
                                             Last name
@@ -113,8 +130,9 @@
                                             error
                                         </small>
                                     </div>
+                                    <!-- END Last name field -->
 
-                                    <!-- Address field -->
+                                    <!-- START Address field -->
                                     <div class="col-span-6 sm:col-span-6">
                                         <label for="address" class="block font-medium text-[#382e4c]">Address</label>
                                         <input
@@ -129,11 +147,13 @@
                                             error
                                         </small>
                                     </div>
+                                    <!-- END Address field -->
                                 </div>
+                                <!-- END Step 2 -->
 
-                                <!-- Step 3 -->
+                                <!-- START Step 3 -->
                                 <div class="form-step hidden grid-cols-6 gap-6">
-                                    <!-- Mobile number field -->
+                                    <!-- START Mobile number field -->
                                     <div class="col-span-6 sm:col-span-6">
                                         <label for="mobileNumber" class="block font-medium text-[#382e4c]">
                                             Mobile number
@@ -155,8 +175,9 @@
                                             error
                                         </small>
                                     </div>
+                                    <!-- END Mobile number field -->
 
-                                    <!-- Social security number field -->
+                                    <!-- START Social security number field -->
                                     <div class="col-span-6 sm:col-span-6">
                                         <label for="socialSecurityNumber" class="block font-medium text-[#382e4c]">
                                             Social security number
@@ -176,17 +197,20 @@
                                             >error</small
                                         >
                                     </div>
+                                    <!-- END Social security number field -->
                                 </div>
+                                <!-- END Step 3 -->
 
-                                <!-- Progress bar container -->
+                                <!-- START Progress bar container -->
                                 <div class="step-container mt-4 flex justify-center space-x-4">
                                     <span class="indicator-step h-2 w-2 rounded-full p-2 shadow-sm"></span>
                                     <span class="indicator-step h-2 w-2 rounded-full p-2 shadow-sm"></span>
                                     <span class="indicator-step h-2 w-2 rounded-full p-2 shadow-sm"></span>
                                 </div>
+                                <!-- END Progress bar container -->
                             </div>
 
-                            <!-- Action buttons -->
+                            <!-- START Action buttons -->
                             <div class="flex justify-between bg-gray-50 px-4 py-3 sm:px-6">
                                 <button
                                     id="btn_prev"
@@ -203,22 +227,58 @@
                                     Next
                                 </button>
                             </div>
+                            <!-- END Action buttons -->
                         </div>
                     </form>
+                    <!-- END Form -->
 
-                    <!-- Footer part with some small author details -->
+                    <!-- START Footer part with some small author details -->
                     <footer>
                         <div class="bg-white p-4 text-center text-[#382e4c]">
                             <span>© 2023 Created by Luka Vrtarić</span>
                         </div>
                     </footer>
+                    <!-- END Footer part with some small author details -->
                 </div>
             </div>
 
-            <!-- Overlay Effect-->
-            <div id="modal" class="fixed inset-0 hidden h-full w-full overflow-y-auto bg-gray-600 bg-opacity-50">
+            <!-- START Users table container -->
+            <div id="modal_table" class="fixed inset-0 hidden h-full w-full overflow-y-auto bg-gray-600 bg-opacity-50">
+                <div class="relative top-20 mx-auto w-fit rounded-md border bg-white p-5 shadow-lg">
+                    <div class="mt-3 text-center">
+                        <table id="table_user" class="table-auto mb-6 shadow-md bg-white">
+                            <thead class="text-white bg-slate-400">
+                                <tr>
+                                    <th class="px-8 py-4">Username</th>
+                                    <th class="px-8 py-4">First name</th>
+                                    <th class="px-8 py-4">Last name</th>
+                                    <th class="px-8 py-4">Address</th>
+                                    <th class="px-8 py-4">Mobile number</th>
+                                    <th class="px-8 py-4">Social security number</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table_user_tbody" class="text-slate-600"></tbody>
+                        </table>
 
-                <!-- Modal content-->
+                        <div class=""></div>
+
+                        <div class="items-center px-4 py-3 sm:px-6">
+                            <button
+                                id="modal_table_btn_close"
+                                type="button"
+                                class="inline-flex w-20 justify-center rounded-md border border-transparent bg-[#563a8e] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#7c5cbc] focus:outline-none"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Users table container -->
+
+            <!-- START Modal constainer -->
+            <div id="modal_info" class="fixed inset-0 hidden h-full w-full overflow-y-auto bg-gray-600 bg-opacity-50">
+                <!-- START Modal content -->
                 <div class="relative top-20 mx-auto w-3/6 rounded-md border bg-white p-5 shadow-lg">
                     <div class="mt-3 text-center">
                         <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#729A40]">
@@ -243,16 +303,18 @@
                         </div>
                         <div class="items-center px-4 py-3 sm:px-6">
                             <button
-                                id="btn_ok"
+                                id="modal_info_btn_close"
                                 type="button"
-                                class="inline-flex w-20 justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium focus:outline-none bg-[#563a8e] text-white shadow-sm hover:bg-[#7c5cbc]"
+                                class="inline-flex w-20 justify-center rounded-md border border-transparent bg-[#563a8e] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#7c5cbc] focus:outline-none"
                             >
                                 Close
                             </button>
                         </div>
                     </div>
                 </div>
+                <!-- START Modal content -->
             </div>
+            <!-- END Modal containert-->
         </div>
 
         <!-- Loading script after DOM content is loaded -->

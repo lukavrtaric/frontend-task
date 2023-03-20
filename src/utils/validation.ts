@@ -29,8 +29,11 @@ const isValidOIB = (oib: string): boolean => {
     for (const digit of oib.substring(0, 10)) {
         a += parseInt(digit);
         a %= 10;
-        if (a === 0) 
+
+        if (a === 0) {
             a = 10;
+        }
+        
         a *= 2;
         a %= 11;
     }
@@ -41,28 +44,25 @@ const isValidOIB = (oib: string): boolean => {
     }
 
     return control === parseInt(oib.substring(10, oib.length));
-}
+};
 
 // Rules
-const validateEmail: ValidationRule = (val) => val.indexOf('@') !== -1;
 const validateRequired: ValidationRule = (val) => val.length > 0;
 const validateNumber: ValidationRule = (val) => Number.isNaN(Number.parseFloat(val));
-const validateInt: ValidationRule = (val) => !Number.isNaN(Number.parseInt(val));
 const validateMinLength: (min: number) => ValidationRule = (min) => (val) => val.length >= min;
 const validateMaxLength: (max: number) => ValidationRule = (max) => (val) => val.length <= max;
-const validateMobileNumber: ValidationRule = (val) => val.match(mobileNumberRegex) ? true : false;
+const validateMobileNumber: ValidationRule = (val) => (val.match(mobileNumberRegex) ? true : false);
 const validateOIB: ValidationRule = (val) => isValidOIB(val);
 
 // Validators from Functions
 export const isRequired: MakeValidator = (msg = "Required") => composeValidator(validateRequired, msg);
-export const isEmail: MakeValidator = (msg = "Valid Email Required") => composeValidator(validateEmail, msg);
 export const isNumber: MakeValidator = (msg = "Number Required") => composeValidator(validateNumber, msg);
-export const isInt: MakeValidator = (msg = "Integer Required") => composeValidator(validateInt, msg);
 export const isMinLength: MakeValidatorWithArg = (min, msg) =>
     composeValidator(validateMinLength(min), msg || `Min Length ${min} required`);
 export const isMaxLength: MakeValidatorWithArg = (max, msg) =>
     composeValidator(validateMaxLength(max), msg || `Max Length ${max} required`);
-export const isMobileNumber: MakeValidator = (msg = "Invalid Mobile number") => composeValidator(validateMobileNumber, msg);
+export const isMobileNumber: MakeValidator = (msg = "Invalid Mobile number") =>
+    composeValidator(validateMobileNumber, msg);
 export const isOibNumber: MakeValidator = (msg = "Invalid OIB number") => composeValidator(validateOIB, msg);
 
 export class Validation<I extends InputStrings> {
